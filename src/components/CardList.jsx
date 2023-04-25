@@ -3,7 +3,7 @@ import longStick from '../images/longStick.svg';
 import Ellipse from '../images/Ellipse.svg';
 import Logo from '../images/Logo.svg';
 import message from '../images/message1.svg';
-import { addId, loadMore, removeId } from 'redux/followingSlice/followingSlice';
+import { loadMore } from 'redux/followingSlice/followingSlice';
 import { follow, unFollow } from 'redux/followingSlice/operations';
 import { useEffect } from 'react';
 
