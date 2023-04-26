@@ -224,3 +224,11 @@ h2 {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+.dropdownBtn {
+  width: 100%;
+}
+
+.dropdownBtn:hover {
+  background-color: #04aa6d;
+}

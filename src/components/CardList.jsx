@@ -40,19 +40,32 @@ export const CardList = () => {
     return value.toLocaleString('en-EN');
   };
 
-  const usersFollowing = allUsers.filter(({ following }) => following === true);
-  const usersUnfollowing = allUsers.filter(
-    ({ following }) => following === false
-  );
+  const getVisibleTweets = (tweets, filterType) => {
+    if (filterType === 'following') {
+      const followingTweets = tweets.filter(
+        ({ following }) => following === true
+      );
+
+      return followingTweets;
+    }
+
+    if (filterType === 'unFollowing') {
+      const followTweets = tweets.filter(
+        ({ following }) => following === false
+      );
+
+      return followTweets;
+    }
+
+    return users;
+  };
+
+  const visibleTweets = getVisibleTweets(allUsers, filter);
+
   return (
     <ul className="card-list">
-      {filter === 'all' &&
-        users.map(({ tweets, avatar, followers, id }) => {
-          // 89000 => 89,000
-          const uiNumbers = value => {
-            return value.toLocaleString('en-EN');
-          };
-
+      {visibleTweets.length > 0 ? (
+        visibleTweets.map(({ tweets, avatar, followers, id }) => {
           return (
             <li key={id} className="list-item" id={id}>
               <Photos />
@@ -79,67 +92,21 @@ export const CardList = () => {
               </div>
             </li>
           );
-        })}
-
-      {filter === 'following' &&
-        usersFollowing.map(({ tweets, avatar, followers, id }) => {
-          return (
-            <li key={id} className="list-item" id={id}>
-              <Photos />
-
-              <div className="card-info-wrap">
-                <img src={avatar} alt="user avatar" className="profile-photo" />
-                <ul className="text-wrap">
-                  <li className="card-text">
-                    {uiNumbers(followers)} Followers
-                  </li>
-                  <li className="card-text">{uiNumbers(tweets)} Tweets </li>
-                </ul>
-                <button
-                  type="button"
-                  onClick={handleClick}
-                  className={
-                    followingIds.includes(id)
-                      ? 'following-button'
-                      : 'follow-button'
-                  }
-                >
-                  {followingIds.includes(id) ? 'Following' : 'Follow'}
-                </button>
-              </div>
-            </li>
-          );
-        })}
-
-      {filter === 'unFollowing' &&
-        usersUnfollowing.map(({ tweets, avatar, followers, id }) => {
-          return (
-            <li key={id} className="list-item" id={id}>
-              <Photos />
-
-              <div className="card-info-wrap">
-                <img src={avatar} alt="user avatar" className="profile-photo" />
-                <ul className="text-wrap">
-                  <li className="card-text">
-                    {uiNumbers(followers)} Followers
-                  </li>
-                  <li className="card-text">{uiNumbers(tweets)} Tweets </li>
-                </ul>
-                <button
-                  type="button"
-                  onClick={handleClick}
-                  className={
-                    followingIds.includes(id)
-                      ? 'following-button'
-                      : 'follow-button'
-                  }
-                >
-                  {followingIds.includes(id) ? 'Following' : 'Follow'}
-                </button>
-              </div>
-            </li>
-          );
-        })}
+        })
+      ) : (
+        <span
+          style={{
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: 40,
+            color: '#010101',
+          }}
+        >
+          No tweets
+        </span>
+      )}
     </ul>
   );
 };

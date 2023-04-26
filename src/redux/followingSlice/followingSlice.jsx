@@ -83,6 +83,13 @@ const followingSlice = createSlice({
           }
           return user;
         });
+
+        state.allUsers = state.allUsers.map(user => {
+          if (user.id === action.payload.data.id) {
+            return (user = action.payload.data);
+          }
+          return user;
+        });
       })
       .addCase(follow.rejected, (state, action) => state)
       .addCase(unFollow.pending, (state, action) => state)
@@ -91,6 +98,13 @@ const followingSlice = createSlice({
           id => id !== action.payload.id
         );
         state.users = state.users.map(user => {
+          if (user.id === action.payload.data.id) {
+            return (user = action.payload.data);
+          }
+          return user;
+        });
+
+        state.allUsers = state.allUsers.map(user => {
           if (user.id === action.payload.data.id) {
             return (user = action.payload.data);
           }
