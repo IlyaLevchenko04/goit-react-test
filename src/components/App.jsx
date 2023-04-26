@@ -1,18 +1,16 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers, loadMoreUsers } from 'redux/followingSlice/operations';
-import { CardList } from './CardList';
+import { Tweets } from './Tweets';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { SharedLayout } from './SharedLayout';
+import { Homepage } from 'pages/Home';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const page = useSelector(state => state.following.page);
-  useEffect(() => {
-    if (page > 1) {
-      dispatch(loadMoreUsers(page));
-      return;
-    }
-    dispatch(fetchUsers(page));
-  }, [dispatch, page]);
-
-  return <CardList />;
+  return (
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Homepage />} />
+        <Route path="tweets" element={<Tweets />} />
+        <Route path="*" element={<Navigate to={'/'} />} />
+      </Route>
+    </Routes>
+  );
 };
