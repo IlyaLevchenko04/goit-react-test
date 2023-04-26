@@ -43,7 +43,7 @@ export const Tweets = () => {
       </Link>
       <CardList />
       {isLoading && <span className="loader">Fetching in progress</span>}
-      {isLoadMore && filter === 'all' && (
+      {isLoadMore && filter === 'All' && (
         <button
           type="button"
           className="load-more-btn"

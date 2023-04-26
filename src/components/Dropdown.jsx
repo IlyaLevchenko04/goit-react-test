@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { setFilter } from 'redux/followingSlice/followingSlice';
 
 export const Dropdown = () => {
+  // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, setState] = useState('All');
   const dispatch = useDispatch();
