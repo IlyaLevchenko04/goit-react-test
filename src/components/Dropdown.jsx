@@ -11,8 +11,6 @@ export const Dropdown = () => {
   const handleFilter = e => {
     const button = e.currentTarget;
 
-    console.log(e.target.value);
-
     if (button.name === 'all') {
       dispatch(filterAll());
       return;
