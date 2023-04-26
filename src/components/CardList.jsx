@@ -11,18 +11,29 @@ import {
   selectFollowingIds,
   selectUsers,
 } from 'redux/followingSlice/selectors';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { setFilter } from 'redux/followingSlice/followingSlice';
 
 export const CardList = () => {
   const users = useSelector(selectUsers);
   const followingIds = useSelector(selectFollowingIds);
   const filter = useSelector(selectFilter);
   const allUsers = useSelector(selectAllUsers);
+  const filterRef = useRef('');
+  // eslint-disable-next-line
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllUsers());
-  }, [dispatch]);
+
+    setSearchParams({ filter: filter });
+
+    filterRef.current = filter;
+
+    dispatch(setFilter(filterRef.current));
+  }, [dispatch, setSearchParams, filter]);
 
   const handleClick = e => {
     const id = e.currentTarget.closest('li').id;
@@ -41,7 +52,7 @@ export const CardList = () => {
   };
 
   const getVisibleTweets = (tweets, filterType) => {
-    if (filterType === 'following') {
+    if (filterType === 'Following') {
       const followingTweets = tweets.filter(
         ({ following }) => following === true
       );
@@ -49,7 +60,7 @@ export const CardList = () => {
       return followingTweets;
     }
 
-    if (filterType === 'unFollowing') {
+    if (filterType === 'Follow') {
       const followTweets = tweets.filter(
         ({ following }) => following === false
       );

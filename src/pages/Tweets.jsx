@@ -31,7 +31,7 @@ export const Tweets = () => {
 
   return (
     <>
-      <Link to={'/'}>
+      <Link to={'/'} className="back-link">
         <button
           className="back-btn"
           onClick={() => {

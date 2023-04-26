@@ -1,33 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  filterAll,
-  filterFollowing,
-  filterUnFollowing,
-} from 'redux/followingSlice/followingSlice';
+import { useSearchParams } from 'react-router-dom';
+import { setFilter } from 'redux/followingSlice/followingSlice';
 
 export const Dropdown = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [state, setState] = useState('All');
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    setState(searchParams.get('filter'));
+  }, [searchParams]);
   const handleFilter = e => {
     const button = e.currentTarget;
 
-    if (button.name === 'all') {
+    if (button.name === 'All') {
       setState('All');
-      dispatch(filterAll());
+      dispatch(setFilter('All'));
       return;
     }
 
-    if (button.name === 'following') {
+    if (button.name === 'Following') {
       setState('Following');
-      dispatch(filterFollowing());
+      dispatch(setFilter('Following'));
       return;
     }
 
-    if (button.name === 'unFollowing') {
+    if (button.name === 'Follow') {
       setState('Follow');
-      dispatch(filterUnFollowing());
+      dispatch(setFilter('Follow'));
       return;
     }
   };
@@ -37,7 +38,7 @@ export const Dropdown = () => {
       <div className="dropdown-content">
         <button
           type="button"
-          name="all"
+          name="All"
           onClick={handleFilter}
           className="dropdownBtn"
         >
@@ -45,7 +46,7 @@ export const Dropdown = () => {
         </button>
         <button
           type="button"
-          name="following"
+          name="Following"
           onClick={handleFilter}
           className="dropdownBtn"
         >
@@ -53,7 +54,7 @@ export const Dropdown = () => {
         </button>
         <button
           type="button"
-          name="unFollowing"
+          name="Follow"
           onClick={handleFilter}
           className="dropdownBtn"
         >

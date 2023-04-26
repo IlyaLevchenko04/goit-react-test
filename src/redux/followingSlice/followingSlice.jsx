@@ -13,7 +13,7 @@ const initialState = {
   page: 1,
   isLoadMore: true,
   isLoading: false,
-  filter: 'all',
+  filter: 'All',
   allUsers: [],
 };
 const followingSlice = createSlice({
@@ -24,14 +24,8 @@ const followingSlice = createSlice({
       state.page = 1;
       state.isLoadMore = true;
     },
-    filterFollowing(state, action) {
-      state.filter = 'following';
-    },
-    filterUnFollowing(state, action) {
-      state.filter = 'unFollowing';
-    },
-    filterAll(state, action) {
-      state.filter = 'all';
+    setFilter(state, action) {
+      state.filter = action.payload;
     },
   },
   extraReducers: builder =>
@@ -134,6 +128,11 @@ const followingSlice = createSlice({
       }),
 });
 
-export const { refreshPage, filterFollowing, filterUnFollowing, filterAll } =
-  followingSlice.actions;
+export const {
+  refreshPage,
+  filterFollowing,
+  filterUnFollowing,
+  filterAll,
+  setFilter,
+} = followingSlice.actions;
 export const followingReducer = followingSlice.reducer;

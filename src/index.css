@@ -266,3 +266,8 @@ h2 {
   border: none;
   color: #373737;
 }
+
+.back-link {
+  display: inline-block;
+  width: 110px;
+}
