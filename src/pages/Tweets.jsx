@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { CardList } from './CardList';
 import { useEffect } from 'react';
 import { fetchUsers, loadMoreUsers } from 'redux/followingSlice/operations';
 import {
@@ -10,6 +9,7 @@ import {
   selectPage,
 } from 'redux/followingSlice/selectors';
 import { refreshPage } from 'redux/followingSlice/followingSlice';
+import { CardList } from 'components/CardList';
 
 export const Tweets = () => {
   const isLoadMore = useSelector(selectIsLoadMore);
@@ -33,6 +33,7 @@ export const Tweets = () => {
     <>
       <Link to={'/'}>
         <button
+          className="back-btn"
           onClick={() => {
             dispatch(refreshPage());
           }}

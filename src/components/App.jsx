@@ -1,4 +1,4 @@
-import { Tweets } from './Tweets';
+import { Tweets } from '../pages/Tweets';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
 import { Homepage } from 'pages/Home';

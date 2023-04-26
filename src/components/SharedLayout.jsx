@@ -22,11 +22,14 @@ export const SharedLayout = () => {
 
   return (
     <>
-      <nav className="nav">
-        <StyledNavLink to={'/'}>Home</StyledNavLink>
-        <StyledNavLink to={'/tweets'}>Tweets</StyledNavLink>
-      </nav>
-      {location.pathname === '/tweets' && <Dropdown />}
+      <div className="nav-container">
+        <nav className="nav">
+          <StyledNavLink to={'/'}>Home</StyledNavLink>
+          <StyledNavLink to={'/tweets'}>Tweets</StyledNavLink>
+        </nav>
+        {location.pathname === '/tweets' && <Dropdown />}
+      </div>
+
       <Outlet />
     </>
   );
