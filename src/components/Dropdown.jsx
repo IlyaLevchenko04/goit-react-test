@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   filterAll,
@@ -6,29 +7,33 @@ import {
 } from 'redux/followingSlice/followingSlice';
 
 export const Dropdown = () => {
+  const [state, setState] = useState('All');
   const dispatch = useDispatch();
 
   const handleFilter = e => {
     const button = e.currentTarget;
 
     if (button.name === 'all') {
+      setState('All');
       dispatch(filterAll());
       return;
     }
 
     if (button.name === 'following') {
+      setState('Following');
       dispatch(filterFollowing());
       return;
     }
 
     if (button.name === 'unFollowing') {
+      setState('Follow');
       dispatch(filterUnFollowing());
       return;
     }
   };
   return (
     <div className="dropdown">
-      <button className="dropbtn">Dropdown</button>
+      <button className="dropbtn">{state}</button>
       <div className="dropdown-content">
         <button
           type="button"

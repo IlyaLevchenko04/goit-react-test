@@ -229,6 +229,6 @@ h2 {
   width: 100%;
 }
 
-.dropdownBtn:hover {
+.dropdownBtn:hover:active {
   background-color: #04aa6d;
 }
