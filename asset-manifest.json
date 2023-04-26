@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/goit-react-test/static/css/main.a6be7fff.css",
-    "main.js": "/goit-react-test/static/js/main.063866ef.js",
+    "main.css": "/goit-react-test/static/css/main.430c72b1.css",
+    "main.js": "/goit-react-test/static/js/main.d15c10fc.js",
     "static/media/message1.svg": "/goit-react-test/static/media/message1.23dcbc3cc8ccc9682f24b4acffb5efb2.svg",
     "static/media/Logo.svg": "/goit-react-test/static/media/Logo.e917114d7945c04c85a8946a331d28b6.svg",
     "static/media/Ellipse.svg": "/goit-react-test/static/media/Ellipse.cf73322ac91036f99e3ae778c55a4a05.svg",
     "static/media/longStick.svg": "/goit-react-test/static/media/longStick.90e23cf44c8259d5b2f74d75abbbd5cd.svg",
     "index.html": "/goit-react-test/index.html",
-    "main.a6be7fff.css.map": "/goit-react-test/static/css/main.a6be7fff.css.map",
-    "main.063866ef.js.map": "/goit-react-test/static/js/main.063866ef.js.map"
+    "main.430c72b1.css.map": "/goit-react-test/static/css/main.430c72b1.css.map",
+    "main.d15c10fc.js.map": "/goit-react-test/static/js/main.d15c10fc.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6be7fff.css",
-    "static/js/main.063866ef.js"
+    "static/css/main.430c72b1.css",
+    "static/js/main.d15c10fc.js"
   ]
 }
